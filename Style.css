@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -68,7 +68,7 @@
   }
   
   .estudante {
-    background-color: #fffafa;
+    background-color: #FF5733; 
     padding: 24px 0;
     text-align: center;
   }
