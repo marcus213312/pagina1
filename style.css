@@ -106,3 +106,36 @@
     text-decoration: none;
   }
   
+/* =============================================== */
+/* CÓDIGOS PARA AS ANIMAÇÕES                */
+/* =============================================== */
+
+
+/* ANIMAÇÃO 1: FAZ OS CARDS APARECEREM AO ROLAR A PÁGINA */
+
+.estudante-div {
+  /* O card começa invisível e um pouco deslocado para baixo */
+  opacity: 0;
+  transform: translateY(20px);
+  
+  /* Define a suavidade da transição para todas as propriedades que vamos animar */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+}
+
+/* O JavaScript vai adicionar esta classe quando o card estiver visível na tela */
+.estudante-div.visible {
+  /* O card se torna totalmente visível e volta à sua posição original */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ANIMAÇÃO 2: EFEITO DE DESTAQUE AO PASSAR O MOUSE (HOVER) */
+
+.estudante-div:hover {
+  /* Aumenta um pouco o tamanho do card */
+  transform: scale(1.05);
+  
+  /* Adiciona uma sombra sutil para dar um efeito de elevação */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
