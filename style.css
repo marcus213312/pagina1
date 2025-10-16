@@ -141,22 +141,26 @@
 }
 
 /* =============================================== */
-/* ANIMAÇÃO 4: ENTRADA DO CABEÇALHO (VERSÃO CORRIGIDA) */
+/* ANIMAÇÃO 5: CORREÇÃO DEFINITIVA DO CABEÇALHO    */
 /* =============================================== */
 
-/* Preparamos os elementos para a animação */
-/* Usamos tanto a versão com hífen quanto com underline para garantir que funcione */
-.cabecalho-imagem, /* <- AQUI ESTÁ A CORREÇÃO */
-.cabecalho_imagem, /* <- AQUI ESTÁ A CORREÇÃO */
+/* A MUDANÇA PRINCIPAL ESTÁ AQUI: */
+/* Removemos a regra 'opacity: 0' deste seletor. */
+/* Agora, apenas preparamos os elementos para receberem a animação */
+/* e dizemos para eles FICAREM no estado final dela. */
+.cabecalho-imagem,
+.cabecalho_imagem,
 .titulo_site,
 .sociais img {
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; /* ESSENCIAL: Mantém o estado final da animação. */
 }
 
+/* Agora, aplicamos as animações como antes. */
+/* A própria animação vai começar com os elementos invisíveis. */
+
 /* 1. Animação do LOGO */
-.cabecalho-imagem, /* <- AQUI ESTÁ A CORREÇÃO */
-.cabecalho_imagem { /* <- AQUI ESTÁ A CORREÇÃO */
+.cabecalho-imagem,
+.cabecalho_imagem {
   animation: slideInFromLeft 0.8s ease-out;
 }
 
@@ -176,7 +180,9 @@
   animation: slideInFromRight 0.5s ease-out 1.2s;
 }
 
-/* Definições das animações (@keyframes) - Estas não mudam */
+
+/* As definições @keyframes continuam perfeitas como estão */
+/* Elas já começam com 'opacity: 0' (invisível) */
 @keyframes slideInFromLeft {
   from { transform: translateX(-100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
