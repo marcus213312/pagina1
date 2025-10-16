@@ -141,73 +141,51 @@
 }
 
 /* =============================================== */
-/* ANIMAÇÃO 4: ENTRADA DINÂMICA DO CABEÇALHO       */
+/* ANIMAÇÃO 4: ENTRADA DO CABEÇALHO (VERSÃO CORRIGIDA) */
 /* =============================================== */
 
-/* Preparamos os elementos para a animação, começando-os invisíveis */
-.cabecalho_imagem,
+/* Preparamos os elementos para a animação */
+/* Usamos tanto a versão com hífen quanto com underline para garantir que funcione */
+.cabecalho-imagem, /* <- AQUI ESTÁ A CORREÇÃO */
+.cabecalho_imagem, /* <- AQUI ESTÁ A CORREÇÃO */
 .titulo_site,
 .sociais img {
-  opacity: 0; /* Começam totalmente transparentes */
-  animation-fill-mode: forwards; /* Garante que eles permaneçam visíveis no final da animação */
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
-/* 1. Animação do LOGO (deslizando da esquerda) */
-.cabecalho_imagem {
+/* 1. Animação do LOGO */
+.cabecalho-imagem, /* <- AQUI ESTÁ A CORREÇÃO */
+.cabecalho_imagem { /* <- AQUI ESTÁ A CORREÇÃO */
   animation: slideInFromLeft 0.8s ease-out;
 }
 
-/* 2. Animação do TÍTULO (aparecendo suavemente) */
+/* 2. Animação do TÍTULO */
 .titulo_site {
-  animation: fadeIn 0.8s ease-out 0.4s; /* Começa 0.4s depois do logo */
+  animation: fadeIn 0.8s ease-out 0.4s;
 }
 
-/* 3. Animação dos ÍCONES SOCIAIS (deslizando da direita, um por um) */
-.sociais img:nth-of-type(1) { /* Primeiro ícone (Whats) */
-  animation: slideInFromRight 0.5s ease-out 0.8s; /* Começa 0.8s depois */
+/* 3. Animação dos ÍCONES SOCIAIS */
+.sociais img:nth-of-type(1) {
+  animation: slideInFromRight 0.5s ease-out 0.8s;
+}
+.sociais img:nth-of-type(2) {
+  animation: slideInFromRight 0.5s ease-out 1.0s;
+}
+.sociais img:nth-of-type(3) {
+  animation: slideInFromRight 0.5s ease-out 1.2s;
 }
 
-.sociais img:nth-of-type(2) { /* Segundo ícone (Face) */
-  animation: slideInFromRight 0.5s ease-out 1.0s; /* Começa 1.0s depois */
-}
-
-.sociais img:nth-of-type(3) { /* Terceiro ícone (Insta) */
-  animation: slideInFromRight 0.5s ease-out 1.2s; /* Começa 1.2s depois */
-}
-
-
-/* Definições das animações que usamos acima (@keyframes) */
-
-/* Animação para deslizar da esquerda para o centro */
+/* Definições das animações (@keyframes) - Estas não mudam */
 @keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
-
-/* Animação para aparecer suavemente no lugar */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-/* Animação para deslizar da direita para o centro */
 @keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
