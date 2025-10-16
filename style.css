@@ -141,57 +141,52 @@
 }
 
 /* =============================================== */
-/* ANIMAÇÃO 5: CORREÇÃO DEFINITIVA DO CABEÇALHO    */
+/* ANIMAÇÃO 6: SOLUÇÃO FINAL COM ATIVAÇÃO JS       */
 /* =============================================== */
 
-/* A MUDANÇA PRINCIPAL ESTÁ AQUI: */
-/* Removemos a regra 'opacity: 0' deste seletor. */
-/* Agora, apenas preparamos os elementos para receberem a animação */
-/* e dizemos para eles FICAREM no estado final dela. */
+/* 1. ESTADO INICIAL: Escondemos os elementos por padrão */
 .cabecalho-imagem,
 .cabecalho_imagem,
 .titulo_site,
 .sociais img {
-  animation-fill-mode: forwards; /* ESSENCIAL: Mantém o estado final da animação. */
+  opacity: 0;
+  /* Adicionamos a transição para suavizar a entrada */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Agora, aplicamos as animações como antes. */
-/* A própria animação vai começar com os elementos invisíveis. */
+/* 2. ESTADO FINAL: Quando a classe .animar-cabecalho for adicionada... */
 
-/* 1. Animação do LOGO */
+/* O logo desliza da esquerda */
+.animar-cabecalho .cabecalho-imagem,
+.animar-cabecalho .cabecalho_imagem {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* O título aparece */
+.animar-cabecalho .titulo_site {
+  opacity: 1;
+  transition-delay: 0.3s; /* Atraso para aparecer depois do logo */
+}
+
+/* Os ícones sociais deslizam da direita em sequência */
+.animar-cabecalho .sociais img {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Atrasos para os ícones aparecerem um após o outro */
+.animar-cabecalho .sociais img:nth-of-type(1) { transition-delay: 0.6s; }
+.animar-cabecalho .sociais img:nth-of-type(2) { transition-delay: 0.8s; }
+.animar-cabecalho .sociais img:nth-of-type(3) { transition-delay: 1.0s; }
+
+
+/* 3. PREPARAÇÃO: Posições iniciais antes da animação começar */
 .cabecalho-imagem,
 .cabecalho_imagem {
-  animation: slideInFromLeft 0.8s ease-out;
+  transform: translateX(-50px); /* Começa um pouco à esquerda */
 }
 
-/* 2. Animação do TÍTULO */
-.titulo_site {
-  animation: fadeIn 0.8s ease-out 0.4s;
-}
-
-/* 3. Animação dos ÍCONES SOCIAIS */
-.sociais img:nth-of-type(1) {
-  animation: slideInFromRight 0.5s ease-out 11111111s;
-}
-.sociais img:nth-of-type(2) {
-  animation: slideInFromRight 0.5s ease-out 111111111s;
-}
-.sociais img:nth-of-type(3) {
-  animation: slideInFromRight 0.5s ease-out 1111111111s;
-}
-
-
-/* As definições @keyframes continuam perfeitas como estão */
-/* Elas já começam com 'opacity: 0' (invisível) */
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes slideInFromRight {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+.sociais img {
+  transform: translateX(50px); /* Começam um pouco à direita */
 }
